@@ -5,37 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Equipos;
+use App\Comments;
 
 
 class EquiposController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
+
         $data['equipos'] = Equipos::all();
         return view('equipos', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
 
@@ -60,42 +46,45 @@ class EquiposController extends Controller
                 return redirect()->back()->withInput(); 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show()
     {
-        $data['equipos'] = Equipos::all();
-        return view('welcome', $data);
-    }
-
-    public function serch(){
-
+        
+    
+            $data['equipos'] = Equipos::all();
+            return view('welcome', $data);
         
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function indexbuscando($id)
+    {
+        $equipo = new Equipos;
+        $equipos = $equipo-> where('codigo', $id)->get();
+        //dd($equipos);
+      /* foreach($equipos as $equipo){
+        dd($equipo->codigo);
+       }*/
+        return view('equiposbuscando',['equipos'=>$equipos]);
+    }
+
+    public function search(){
+
+   $codigo = request()->codigo;
+        $id = request()->codigo;
+   $equipo = new Equipos;
+   $equipos = $equipo-> where('codigo', $codigo)->get();
+  
+    
+    return redirect("/equipo/$id");
+    }
+    
     public function edit($id)
     {
         $data['equipo'] = Equipos::find($id);
         return view('create', $data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function update(Request $request, $id)
     {   
        if($request->has('codigo')){

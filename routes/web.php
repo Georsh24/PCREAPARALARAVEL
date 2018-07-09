@@ -17,8 +17,9 @@ Route::get('/', function () {
     
     return view('welcome');
 });*/
-Route::get('/', 'EquiposController@show' );
-
+Route::get('/', 'EquiposController@show'  );
+Route::get('/equipo/{id}', 'EquiposController@indexbuscando'  );
+Route::post('/search/event', 'EquiposController@search');
     
 
 

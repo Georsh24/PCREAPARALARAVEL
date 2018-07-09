@@ -64,22 +64,22 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li>
-            <a class="textencabezado" href="index.php #section1">Inicio</a>
+            <a class="textencabezado" href="#section1">Inicio</a>
           </li>
           <li>
-            <a class="textencabezado" href="index.php #section2">Promociones</a>
+            <a class="textencabezado" href="#section2">Promociones</a>
           </li>
           <li>
-            <a class="textencabezado" href="index.php #section3">Nuestro Equipo</a>
+            <a class="textencabezado" href="#section3">Nuestro Equipo</a>
           </li>
           <li>
-            <a class="textencabezado" href="index.php #section41">Contactanos</a>
+            <a class="textencabezado" href="#section41">Contactanos</a>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
 
           <li>
-            <a class="textencabezado" href="/login">Iniciar Sesion</a>
+            <a class="textencabezado" href="/login">Administracion</a>
           </li>
           <li>
             <a class="textencabezado" href="/register">Registro</a>
@@ -162,7 +162,7 @@
 <div id="section2" class="container-fluid">
   <div class="container">
     <h1>Promociones</h1>
-    <div class="container">
+    <div class="container"> 
       <div class="row">
         <div class="col-md-4">
           <div class="row">
@@ -172,12 +172,15 @@
                   <span class="glyphicon glyphicon-search" aria-hidden="true"> </span> Busqueda
                 </div>
                 <div class="panel-body">
-                  <div class="form-group">
-                    <input type="search" class="form-control" placeholder="¿En que puedo ayudarte?">
-                  </div>
-                  <button class="form-control">Buscar</button>
-                  <p class="text-center">Esperamos que encuentres lo que estas buscando!</p>
-                </div>
+                  <form method="POST" action="/search/event">
+                    {{ csrf_field()}}
+                     
+                        <input type="text" class="form-control" name="codigo" placeholder="Buscar..." required autofocus/>
+                        <br>
+
+                  <button type="submit" class="form-control">Buscar</button>
+               </form>
+               </div>
               </div>
             </div>
           </div>
@@ -208,23 +211,7 @@
                                   
                                       </tr>
                                   </thead>
-                                  <tbody>
-                                      
-                                          @foreach ($equipos as $key => $equipo)
-                                          <tr>
-                                              <td>{{($key+1)}}</td>
-                                              <td>{{ $equipo->codigo}}</td>
-                                              <td>{{ $equipo->model}}</td>
-                                              <td>{{ $equipo->serie}}</td>
-                                              <td>{{ $equipo->descripcion}}</td>
-                                              <td>{{ $equipo->estado}}</td>
-                                              <td>{{ $equipo->costo}}</td>
-                                           
-                                          </tr>
-                                          @endforeach
-                                     
-                  
-                                  </tbody>
+                                
                               </table>
                               
                           </div>
