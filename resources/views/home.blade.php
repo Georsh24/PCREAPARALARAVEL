@@ -14,7 +14,7 @@
                         </div>
                     @endif
                    
-                    <a href="{{ URL ('equipos') }}" class="btn btn-sm btn-primary">New Equipo</a>
+                    <a href="{{ URL ('equipos') }}" class="btn btn-sm btn-primary">New po</a>
 
 
                     

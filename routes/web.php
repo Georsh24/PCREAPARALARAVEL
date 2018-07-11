@@ -30,3 +30,4 @@ Route::get('/home', 'EquiposController@index')->name('equipos');
 Route::group(['prefix' => ''], function(){
     Route::resource('equipos', 'EquiposController');
 });
+Route::get('/pdf/{id}', 'PdfController@index');

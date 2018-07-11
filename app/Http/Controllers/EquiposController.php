@@ -10,6 +10,8 @@ use App\Comments;
 
 class EquiposController extends Controller
 {
+
+
     public function index()
     {
 
@@ -17,6 +19,7 @@ class EquiposController extends Controller
         return view('equipos', $data);
     }
 
+   
     public function create()
     {
         return view('create');
@@ -26,8 +29,9 @@ class EquiposController extends Controller
     {
 
         $validate = $request->validate([
-            'codigo' => 'unique:equipos,codigo',
-            'serie' => 'unique:equipos,serie'
+            'codigo' => 'unique:equipos,codigo,',
+            'serie' => 'unique:equipos,serie,'
+            
         ]);
         $equipo = [
 
@@ -37,6 +41,9 @@ class EquiposController extends Controller
             'descripcion' => $request->descripcion,
             'estado' => $request->estado,
             'costo' => $request->costo,
+            'nombre' => $request->nombre,
+            'telefono' => $request->telefono,
+            'email' => $request->email
         ];
         $save = Equipos::insert($equipo);
             if($save)
@@ -60,10 +67,7 @@ class EquiposController extends Controller
     {
         $equipo = new Equipos;
         $equipos = $equipo-> where('codigo', $id)->get();
-        //dd($equipos);
-      /* foreach($equipos as $equipo){
-        dd($equipo->codigo);
-       }*/
+     
         return view('equiposbuscando',['equipos'=>$equipos]);
     }
 
@@ -97,6 +101,9 @@ class EquiposController extends Controller
             'descripcion' => $request->descripcion,
             'estado' => $request->estado,
             'costo' => $request->costo,
+            'nombre' => $request->nombre,
+            'telefono' => $request->telefono,
+            'email' => $request->email
         ];
     }else{
         $equipo =[
@@ -106,6 +113,9 @@ class EquiposController extends Controller
         'descripcion' => $request->descripcion,
         'estado' => $request->estado,
         'costo' => $request->costo,
+        'nombre' => $request->nombre,
+        'telefono' => $request->telefono,
+        'email' => $request->email,
         ];
     }
         

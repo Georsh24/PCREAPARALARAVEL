@@ -10,6 +10,9 @@ $factory->define(App\equipos::class, function (Faker $faker) {
         'descripcion' => $faker->descripcion,
         'estado' => $faker->estado,
         'costo' => $faker->costo,
+        'nombre' => $faker->nombre,
+        'telefono' => $faker->telefono, 
+        'telefono'=> $faker->email,
 
         
     ];

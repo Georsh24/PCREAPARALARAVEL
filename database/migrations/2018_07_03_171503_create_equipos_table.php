@@ -21,6 +21,9 @@ class CreateEquiposTable extends Migration
             $table->string('descripcion');
             $table->string('estado');
             $table->unsignedInteger('costo');
+            $table->string('nombre');
+            $table->string('telefono');
+            $table->string('email')->unique();
             $table->timestamps();
         });
     }
